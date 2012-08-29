@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//mods/models.py=utf-8
 encoding//mods/urls.py=utf-8
 encoding//mods/views/add_module.py=utf-8
+encoding//util/upload.py=utf-8
 encoding/settings.py=utf-8
