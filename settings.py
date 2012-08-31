@@ -1,8 +1,12 @@
 #coding: utf-8
 # Django settings for omod project.
+import os
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -145,3 +149,7 @@ LOGGING = {
         },
     }
 }
+
+
+#附件上传配置项
+FILE_UPLOAD_PATH = os.path.join(ROOT, "static/attach/").replace("\\", "/")
