@@ -14,6 +14,7 @@ def getMod(request):
         modIdQuery   = request.GET.get('modId')
         typeIdQuery  = request.GET.get('typeId')
         layoutQuery  = request.GET.get('layout')
+        isOnlineQuery= request.GET.get('isOnline')
         
         # 获取Mods
         modList = []
@@ -26,6 +27,11 @@ def getMod(request):
         if typeIdQuery is not None and typeIdQuery != '':
             mods = mods.filter(type=typeIdQuery)
             
+        if isOnlineQuery == 'y':
+            mods = mods.filter(is_online=True)
+        elif isOnlineQuery == 'n':
+            mods = mods.filter(is_online=False)
+            
         if layoutQuery is not None and layoutQuery != '':
             layouts = layoutQuery.split(',')
             fitMods = ModLayoutSupport.objects.filter(layout_type__in=layouts)
@@ -33,6 +39,7 @@ def getMod(request):
             for mod in fitMods:
                 modPks.append(mod.pk)
             mods = mods.filter(pk__in=modPks)
+        
         
         # 拼装JSON
         for item in mods:

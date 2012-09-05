@@ -1,11 +1,9 @@
 #coding: utf-8
 # Django settings for omod project.
-import os
-
+import os.path
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 ADMINS = (
@@ -100,7 +98,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
@@ -120,6 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
     'mods',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
@@ -149,7 +148,5 @@ LOGGING = {
         },
     }
 }
-
-
 #附件上传配置项
 FILE_UPLOAD_PATH = os.path.join(ROOT, "static/attach/").replace("\\", "/")

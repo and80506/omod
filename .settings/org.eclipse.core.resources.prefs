@@ -1,9 +1,14 @@
+#Sun Sep 02 15:30:22 CST 2012
 eclipse.preferences.version=1
 encoding//mods/models.py=utf-8
 encoding//mods/urls.py=utf-8
+encoding//mods/views/add_module.py=utf-8
+encoding//mods/views/add_module_result.py=utf-8
+encoding//mods/views/add_type.py=utf-8
 encoding//mods/views/get_mod.py=utf-8
 encoding//mods/views/get_type.py=utf-8
 encoding//mods/views/insert_data.py=utf-8
-encoding//mods/views/add_module.py=utf-8
+encoding//mods/views/update_module.py=utf-8
+encoding//mods/views/update_module_result.py=utf-8
 encoding//util/upload.py=utf-8
 encoding/settings.py=utf-8
