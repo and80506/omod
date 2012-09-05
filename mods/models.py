@@ -27,7 +27,7 @@ class Mod(models.Model):
     # 最后修改时间
     last_modified_time = models.DateTimeField(auto_now=True)
     # 是否已审核
-    isOnline =  models.BooleanField()
+    is_online =  models.BooleanField()
     
     class Meta:
         #自定义表名   

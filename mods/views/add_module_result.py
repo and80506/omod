@@ -25,7 +25,7 @@ def addModuleResult(request):
                                 html_tpl_str = form.get("html_tpl_str"),
                                 demo_json_str = form.get("demo_json_str"),
                                 last_modified_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())) ,
-                                isOnline = False
+                                is_online = False
                                 )
         modTable.save()
         
