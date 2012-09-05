@@ -58,9 +58,11 @@ class Upload:
                 recordId = self.addRecord(oldfilename, filetype, uploaddate)
                 
                 recordIds.append(recordId)
-                
-        if not self.logId:
-            return recordIds
+                 
+        return {
+                'attachId' : recordIds,
+                'file_path' : self.tablePath
+                }
     
         
     ##插入记录 
