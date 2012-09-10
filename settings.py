@@ -1,6 +1,6 @@
 #coding: utf-8
 # Django settings for omod project.
-import os
+import os.path
 
 
 DEBUG = True
@@ -19,7 +19,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'omod', # Or path to database file if using sqlite3.
         'USER': 'root', # Not used with sqlite3.
-        'PASSWORD': 'root', # 开发环境请修改mysql用户&&密码
+        'PASSWORD': '125396', # 开发环境请修改mysql用户&&密码
         'HOST': '127.0.0.1', # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '3306', # Set to empty string for default. Not used with sqlite3.
     }

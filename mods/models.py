@@ -26,6 +26,8 @@ class Mod(models.Model):
     demo_json_str = models.TextField()
     # 最后修改时间
     last_modified_time = models.DateTimeField(auto_now=True)
+    # 是否已审核
+    is_online =  models.BooleanField()
     
     class Meta:
         #自定义表名   
@@ -86,7 +88,6 @@ class attach(models.Model):
     file_type = models.CharField(max_length=128)            #文件类型
     file_path = models.CharField(max_length=100)            #文件路径
     upload_date = models.DateTimeField(auto_now=True)       #上传时间
-    
     class Meta:
         #自定义表名   
         db_table = 'attach'
