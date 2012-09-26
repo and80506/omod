@@ -43,3 +43,4 @@ urlpatterns = patterns('',
    
 )
 
+    url(r'^addModuleResult', addModuleResult),

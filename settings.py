@@ -19,7 +19,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'omod', # Or path to database file if using sqlite3.
         'USER': 'root', # Not used with sqlite3.
+<<<<<<< HEAD
         'PASSWORD': '123456', # 开发环境请修改mysql用户&&密码
+=======
+        'PASSWORD': '125396', # 开发环境请修改mysql用户&&密码
+>>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
         'HOST': '127.0.0.1', # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '3306', # Set to empty string for default. Not used with sqlite3.
     }
@@ -61,7 +65,11 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
+<<<<<<< HEAD
 STATIC_ROOT = os.path.join(ROOT, "static").replace("\\", "/")
+=======
+STATIC_ROOT = ''
+>>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"

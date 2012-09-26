@@ -19,7 +19,11 @@
 		<form  onsubmit ="return validateForm()" id="form_474430" name="form_474430" class="appnitro" enctype="multipart/form-data" method="post" action="/omod/updateModuleResult">
 		<div class="form_description">
 			<h2>修改组件</h2>
+<<<<<<< HEAD
 			<p></p>
+=======
+			<p>以下都是必填项.</p>
+>>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 		</div>						
 		<ul >
 		<!--<li id="li_5" >
@@ -105,8 +109,12 @@
 			<div>
 				<textarea id="demo_json_str" name="demo_json_str" class="element textarea medium">{{models.mod.demo_json_str}}</textarea> 
 			</div>
+<<<<<<< HEAD
 			<p class="guidelines" id="guide_8"><small>对象属性名前必须加双引号<br>
 示例:{"cateName" : "Electronics","viewMoreURL" : "#text"}</small></p> 
+=======
+			<p class="guidelines" id="guide_8"><small>请把示例JSON代码复制到此处</small></p> 
+>>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 		</li>
 		<li class="buttons">
 			    <input type="hidden" name="form_id" value="{{models.mod_id}}" />
@@ -118,6 +126,32 @@
 		</div>
 	</div>
 	<img id="bottom" src="http://styleshit.me/demo/src/bottom.png" alt="" >
+<<<<<<< HEAD
 	<script type="text/javascript" src="http://styleshit.me/demo/src/update_mod.js"></script>
+=======
+	<script type="text/javascript">
+		function validateForm(){
+			var form =document.form_474430;
+			var  type =  (function(){
+				for (var i=0; i<form.check_box_list.length; i++) {
+					if(!form.check_box_list[i].value) {
+						return false;
+					}
+				};
+				return true;
+			})()
+			var		name = form.name.value ;
+			var		img_thumb = form.img_thumb.value ;
+			var		html_tpl_str = form.html_tpl_str.value ;
+			var		mod_js_require = form.mod_js_require.value ;
+			var		mod_css_require = form.mod_css_require.value ;
+			var		demo_json_str = form.demo_json_str.value ;
+			if( !(type && name && img_thumb  && mod_css_require && mod_js_require && demo_json_str)){
+				alert('表单项不能为空！')
+				return false;
+			}
+		}
+	</script>
+>>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 	</body>
 </html>

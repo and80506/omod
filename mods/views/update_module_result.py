@@ -10,18 +10,28 @@ def updateModuleResult(request):
     if request.method == "POST" :
         form =  request.POST
         modId  = form.get("form_id")
+<<<<<<< HEAD
         mod = Mod.objects.filter(id = modId)[0]
+=======
+>>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
         #保存上传的附件
         if request.FILES.getlist('img_thumb'):
                 uploadAttach = request.FILES.getlist('img_thumb')
                 dbAttach = Upload().saveAttach(uploadAttach)
                 attachId = dbAttach['attachId']
                 imgThumb = FILE_UPLOAD_PATH + dbAttach['file_path']
+<<<<<<< HEAD
                 #如果不上传组件缩略图则不更新组件缩略图
                 mod.img_thumb =  imgThumb
                 
         #更新mod表记录
         
+=======
+                
+        #更新mod表记录
+        mod = Mod.objects.filter(id = modId)[0]
+        mod.img_thumb =  imgThumb
+>>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
         mod.type_id =  form.get("type")
         mod.html_tpl_str =  form.get("html_tpl_str")
         mod.demo_json_str =  form.get("demo_json_str")
@@ -30,8 +40,13 @@ def updateModuleResult(request):
         mod.save()
         
         #更新mod_js_require表记录
+<<<<<<< HEAD
         jsRequire = form.get("mod_js_require")
         ModJSRequire.objects.filter(mod = modId).delete()
+=======
+        ModJSRequire.objects.filter(id = modId).delete()
+        jsRequire = form.get("mod_js_require")
+>>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
         jsUrlList = jsRequire.split('\r\n')
         for jsUrl in jsUrlList :
             
@@ -42,9 +57,14 @@ def updateModuleResult(request):
                                         )
             ModJSRequireTable.save()
         
+<<<<<<< HEAD
         #更新mod_css_require表记录
         cssRequire = form.get("mod_css_require")
         ModCSSRequire.objects.filter(mod = modId).delete() 
+=======
+        #更新mod_css_require表记录 
+        cssRequire = form.get("mod_css_require")
+>>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
         cssUrlList = cssRequire.split('\r\n')
         for cssUrl in cssUrlList :
             ModCSSRequireTable = ModCSSRequire(
@@ -58,6 +78,11 @@ def updateModuleResult(request):
         ModLayoutSupport.objects.filter(mod = modId).delete()
         checkbox_list = request.REQUEST.getlist('check_box_list')
         for checkedField in checkbox_list :
+<<<<<<< HEAD
+=======
+            print checkedField
+        for checkedField in checkbox_list :
+>>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
             ModLayoutSupportTable = ModLayoutSupport(
                                         mod_id =  int(modId),
                                         layout_type = checkedField

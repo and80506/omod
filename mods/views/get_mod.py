@@ -22,7 +22,11 @@ def getMod(request):
         
         # 筛选
         if modIdQuery is not None and modIdQuery != '':
+<<<<<<< HEAD
             mods = mods.get(pk=modIdQuery)
+=======
+            mods = mods.filter(pk=modIdQuery)
+>>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
             
         if typeIdQuery is not None and typeIdQuery != '':
             mods = mods.filter(type=typeIdQuery)
