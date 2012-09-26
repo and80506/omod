@@ -61,11 +61,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-<<<<<<< HEAD
 STATIC_ROOT = os.path.join(ROOT, "static").replace("\\", "/")
-=======
-STATIC_ROOT = ''
->>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
