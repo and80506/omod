@@ -35,10 +35,7 @@ def addModuleResult(request):
         for jsUrl in jsUrlList :
             
             ModJSRequireTable = ModJSRequire(
-<<<<<<< HEAD
                                         #@TO DO 组件从中间删除时，组件id从删除后的id+1，造成问题
-=======
->>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
                                         mod_id =  int(modId)+1,
                                         url = jsUrl,
                                         index = jsUrlList.index(jsUrl)

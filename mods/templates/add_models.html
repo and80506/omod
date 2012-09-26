@@ -7,10 +7,7 @@
 <script type="text/javascript" src="http://styleshit.me/demo/src/view.js"></script>
 <style type="text/css">
 	body {font:75%/1.5 "Microsoft YaHei","Lucida Grande",Verdana !important;}
-<<<<<<< HEAD
 	.red {color:#f60!important;}
-=======
->>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 </style>
 </head>
 <body id="main_body" >
@@ -21,11 +18,7 @@
 		<form  onsubmit ="return validateForm()" id="form_474420" name="form_474420" class="appnitro" enctype="multipart/form-data" method="post" action="/omod/addModuleResult">
 		<div class="form_description">
 			<h2>添加组件</h2>
-<<<<<<< HEAD
 			<p class="red">加※的是必填项。(一般情况下除布局组件外的其他组件需填写所有项目)</p>
-=======
-			<p>以下都是必填项.</p>
->>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 		</div>						
 		<ul >
 		<!--<li id="li_5" >
@@ -35,21 +28,13 @@
 		</div> 
 		</li>-->		
 		<li id="li_6" >
-<<<<<<< HEAD
 		<label class="description red" for="name">(※)组件描述： </label>
-=======
-		<label class="description" for="name">组件描述： </label>
->>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 		<div>
 			<input id="name" name="name" class="element text medium" type="text" maxlength="255" value=""/> 
 		</div> 
 		</li>		
 		<li id="li_2" >
-<<<<<<< HEAD
 		<label class="description red" for="img_thumb">(※)请上传组件缩略图： </label>
-=======
-		<label class="description" for="img_thumb">请上传组件缩略图： </label>
->>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 		<div>
 			<input id="img_thumb" name="img_thumb" class="element file" type="file"/> 
 		</div>  
@@ -67,11 +52,7 @@
 		</div> 
 		</li>		
 		<li id="li_14" >
-<<<<<<< HEAD
 		<label class="description" for="mod_layout_support">请选择组件支持的布局位(可多选) </label>
-=======
-		<label class="description" for="mod_layout_support">请选择组件支持的布局位 </label>
->>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 		<div>
 			{% if  models.mod_layout_support %}
 				{% for m in models.mod_layout_support %}
@@ -94,7 +75,6 @@
 		</span> -->
 		</li>		
 		<li id="li_7" >
-<<<<<<< HEAD
 		<label class="description red" for="html_tpl_str">(※)HTML模板代码 </label>
 		<div>
 			<textarea id="html_tpl_str" name="html_tpl_str" class="element textarea medium"></textarea> 
@@ -125,31 +105,6 @@ http://www.b.css
 			<p class="guidelines" id="guide_8"><small>对象属性名前必须加双引号<br>
 示例:{"cateName" : "Electronics","viewMoreURL" : "#text"}
 </small></p> 
-=======
-		<label class="description" for="html_tpl_str">HTML模板代码 </label>
-		<div>
-			<textarea id="html_tpl_str" name="html_tpl_str" class="element textarea medium"></textarea> 
-		</div><p class="guidelines" id="guide_7"><small>请把HTML模板代码复制到此处</small></p> 
-		</li>		
-		<li id="li_10" >
-		<label class="description" for="mod_js_require">组件依赖的JS列表 </label>
-		<div>
-			<textarea id="mod_js_require" name="mod_js_require" class="element textarea medium"></textarea> 
-		</div><p class="guidelines" id="guide_7"><small>多个js地址以分行填写</small></p> 
-		</li>		
-		<li id="li_11" >
-		<label class="description" for="mod_css_require">组件依赖的CSS列表 </label>
-		<div>
-			<textarea id="mod_css_require" name="mod_css_require" class="element textarea medium"></textarea> 
-		</div><p class="guidelines" id="guide_7"><small>多个css地址以分行填写</small></p> 
-		</li>		
-		<li id="li_8" >
-			<label class="description" for="demo_json_str">示例JSON数据 </label>
-			<div>
-				<textarea id="demo_json_str" name="demo_json_str" class="element textarea medium"></textarea> 
-			</div>
-			<p class="guidelines" id="guide_8"><small>请把示例JSON代码复制到此处</small></p> 
->>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 		</li>
 		<li class="buttons">
 			    <input type="hidden" name="form_id" value="474420" />
@@ -161,26 +116,6 @@ http://www.b.css
 		</div>
 	</div>
 	<img id="bottom" src="http://styleshit.me/demo/src/bottom.png" alt="" >
-<<<<<<< HEAD
 	<script type="text/javascript" src="http://styleshit.me/demo/src/add_mod.js"></script>
-=======
-	<script type="text/javascript">
-		function validateForm(){
-			var form =document.form_474420;
-			var type = form.type.value,
-					name = form.name.value,
-					img_thumb = form.img_thumb.value,
-					mod_layout_support = form.mod_layout_support.value,
-					html_tpl_str = form.html_tpl_str.value,
-					mod_js_require = form.mod_js_require.value,
-					mod_css_require = form.mod_css_require.value,
-					demo_json_str = form.demo_json_str.value;
-			if( !(type && name && img_thumb && mod_layout_support && mod_css_require && mod_js_require && demo_json_str)){
-				alert('表单项不能为空！')
-				return false;
-			}
-		}
-	</script>
->>>>>>> 92f07fa2e1a329acd9701faaf566aad83950eb55
 	</body>
 </html>
