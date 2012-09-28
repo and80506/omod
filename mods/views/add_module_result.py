@@ -15,7 +15,8 @@ def addModuleResult(request):
                 uploadAttach = request.FILES.getlist('img_thumb')
                 dbAttach = Upload().saveAttach(uploadAttach)
                 attachId = dbAttach['attachId']
-                imgThumb = FILE_UPLOAD_PATH + dbAttach['file_path']
+               # imgThumb = FILE_UPLOAD_PATH + dbAttach['file_path']
+                imgThumb = "/omod/media/attach/"  + dbAttach['file_path']
         
         #新增mod表记录
         modTable = Mod(

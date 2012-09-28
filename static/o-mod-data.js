@@ -288,12 +288,12 @@ define('o-mod-data.js', ['run/intl-activities/app/mustache/mustache-0.5.2.js'], 
 			var cache = this.cache;
 			var modClass = cache.targetMod.attr('class');
 			var modIndex = cache.targetMod.attr('data-index');
-
+			var modOpt = cache.targetMod.find('.omod-opt');
 			var html = $(Mustache.to_html(cache.targetTmp, obj.data));
 			html.attr({
 				'class': modClass,
 				'data-index': modIndex
-			});
+			}).append(modOpt.clone(true));
 			
 			cache.targetMod.replaceWith(html);
 		},

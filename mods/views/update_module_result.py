@@ -16,7 +16,7 @@ def updateModuleResult(request):
                 uploadAttach = request.FILES.getlist('img_thumb')
                 dbAttach = Upload().saveAttach(uploadAttach)
                 attachId = dbAttach['attachId']
-                imgThumb = FILE_UPLOAD_PATH + dbAttach['file_path']
+                imgThumb = "/omod/media/attach/" + dbAttach['file_path']
                 #如果不上传组件缩略图则不更新组件缩略图
                 mod.img_thumb =  imgThumb
                 

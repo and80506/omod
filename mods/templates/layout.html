@@ -8,7 +8,7 @@
 <meta name="robots" content="nofollow,noindex"/>
 #parse("$pageInfo.style")
 <link rel="stylesheet" href="http://style.aliunicorn.com/5v/wholesale/buyer/base/reset|5v/wholesale/buyer/base/grids|5v/wholesale/activities/common/common|v_3240878290059_0.css" />
-<link rel="stylesheet" href="/media/o-mod-data.css" />
+<link rel="stylesheet" href="/omod/media/o-mod-data.css" />
 <link rel="stylesheet" href="http://styleshit.me/demo/src/main.css" />
 <style>
 .grid-c {margin:0 auto 10px;width:990px;min-height:120px;background:#F4F4F4;}
@@ -39,10 +39,12 @@
 		.omod-opt li {height: 30px;padding: 0px 5px;line-height: 30px;}
 		.omod-opt li:hover {background:rgba(0,0,0,0.5);}	
 			.omod-opt li a {color:#FFF;}
+	.layout .omod-opt a, .layout .omod-opt a:visited {font-weight: normal;font-size: 12px;float: right;height: 30px;line-height: 30px;margin-right: 10px;padding-right: 9px;background: url(http://style.aliexpress.com/wimg/activities/sprite/sprite.png) no-repeat right -187px;}
 	.omod-preview {position:relative;}
 /* o-mod-window */
 .o-mod-window {position:absolute;display:none;z-index:999;padding:10px 3px 10px 5px;width:500px;height:400px;border:1px solid #CCCCCC;border-radius:8px;box-shadow:0 0 5px #CCC;background:#FFF;}
-	.o-mod-window:after, .o-mod-wm:after {content:"";position:absolute;right:30px;width:0;height:0;border-style:solid;border-color:transparent;border-width:9px 11px;overflow:hidden;}
+	.o-mod-window:after, .o-mod-wm:after {content:"";position:absolute;left:30px;width:0;height:0;border-style:solid;border-color:transparent;border-width:9px 11px;overflow:hidden;}
+.right-arrow .o-mod-window:after, .right-arrow  .o-mod-wm:after {left: auto;right:30px}	
 	.o-mod-window:after {z-index:0;top:-18px;border-bottom-color:#CCCCCC;}
 	/* o-mod-wm */
 	.o-mod-wm {overflow-y:scroll;height:100%;overflow-x:hidden;}
@@ -60,7 +62,9 @@
 
 .page-html {padding:10px 0;text-align:center;overflow:hidden;}
 	.page-html .inp-atext {display:none;position:fixed;top:50px;bottom:50px;left:50%;margin-left:-495px;width:990px;border:1px solid #DDD;box-shadow:0 0 3px;font-family:verdana;line-height:1.5;}
-	.page-html button {position:fixed;right:10px;bottom:10px;padding:3px 10px;line-height:25px;}
+	.page-html button{position:fixed;bottom:10px;padding:3px 10px;line-height:25px;}
+	.page-html button.get-html {right:10px;}
+	.preview {right:106px;}
 
 </style>
 </head>
@@ -80,11 +84,12 @@
 
 <div class="page-html" id="page-html">
 	<textarea name="" class="inp-atext" cols="30" rows="10" readonly="readonly"></textarea>
-	<button>获取HTML</button>
+	<button class="preview">预览</button>
+	<button class="get-html">获取HTML</button>
 </div>
 
-<script src="/media/o-mod-data.js"></script>
-<script src="/media/o-mod-data-factory.js"></script>
+<script src="/omod/media/o-mod-data.js"></script>
+<script src="/omod/media/o-mod-data-factory.js"></script>
 <script>
 define('omod_create_page.js', ['run/intl-activities/app/mustache/mustache-0.5.2.js'], 
 function(require, exports, module) {
@@ -214,11 +219,13 @@ function(require, exports, module) {
 
 		//mod相关操作
 		$('.omod-opt a').live('click',function(e){
+			
 			var oModOpt = $(this).parents('.omod-opt');
 			var action = $(this).attr('data-action');
-
-			if(!currentOmod){return false;}
+			currentLayout = $(this).parents('.layout');
+			currentOmodWrap = $(this).parents('.vi-virtual-module');
 			
+			currentOmod = $(this).parents('.omod-opt').parent();
 			//增加数据
 			if(action == 'add'){
 				_addModData();
@@ -233,8 +240,15 @@ function(require, exports, module) {
 						//隐藏组件编辑界面
 						oModOpt.removeClass('omod-opt-active');
 						//删除布局结构
+						
 						currentOmod.animate({height:0}, 150, function(){
-							currentOmodWrap.removeClass('omod-preview').addClass(setting.modWrapClassName).html('<a href="javascript:;" data-action="addMod">添加组件</a>');
+							var currentOmodTemp =$(this);
+							var currentOmodWrapTemp =$(this).parents('.vi-virtual-module');
+							
+							currentOmodTemp.remove();
+							if(currentOmodWrapTemp.find('div[class^="omod-"]').size() == 0){
+								currentOmodWrapTemp.html('<a href="javascript:;" data-action="addMod">添加组件</a>');
+							}
 						});
 					}
 				}
@@ -255,12 +269,20 @@ function(require, exports, module) {
 		$('#page-html').find('.inp-atext').click(function(e){
 			$(this).select();
 			e.stopPropagation();
-		}).end().find('button').click(function(e){
+		}).end().find('button.get-html').click(function(e){
 			_getPageContent();
 			e.stopPropagation();
 		})
-
-		//
+		
+		//预览
+		$('button.preview').toggle(function(){
+			$('.vi-virtual-module').removeClass('vi-virtual-module').addClass('omod-preview');
+			$(this).html("编辑");
+		},function(){
+			$('.omod-preview').removeClass('omod-preview').addClass('vi-virtual-module');
+			$(this).html("预览");
+		})
+		//隐藏各种弹窗
 		$('body').click(function(){
 			if($('.page-html .inp-atext:visible').length){
 			$('.page-html .inp-atext').hide();
@@ -493,8 +515,14 @@ function(require, exports, module) {
 		}
 		modWindow = $('#'+ setting.modWindowId);
 		modWindwBox = modWindow.find('.o-mod-wm');
-
-		modWindow.css({top: offset.top + 25, left: offset.left - modWindow.width() + 40})
+		if(obj.target.attr('data-action') == 'addMod'){
+			$('body').removeClass('right-arrow');
+			modWindow.css({'top': offset.top + 25, 'left': offset.left, 'z-index': 1000});
+		}else{
+			$('body').addClass('right-arrow');
+			modWindow.css({'top': offset.top + 25, 'left': offset.left - modWindow.width() + 40});
+		}
+		
 
 		$.ajax({
 			type : 'GET',
@@ -533,7 +561,15 @@ function(require, exports, module) {
 			//当前选中的组件id,匹配数据库id
 			var theModData = modData[obj.mod.attr('data-mod-id')-1];
 			//当前组件索引
-			var modIndex = currentLayout.find('.layout-opt').prev().children().size();
+			var	modIndex;
+			//var modIndex = currentLayout.find('.layout-opt').prev().children().size();
+			console.log(currentLayout.find('.vi-virtual-module'),currentOmodWrap)
+			if(currentLayout.find('.vi-virtual-module').size >1){
+				modIndex = currentLayout.find('.vi-virtual-module').index(currentOmodWrap);
+			}else{
+				modIndex = currentLayout.find('div[class^="omod-"]').size();
+			}
+			console.log(modIndex);
 			var layoutIndex = currentLayout.attr('data-index');
 			
 			//载入组件依赖的css
@@ -626,6 +662,7 @@ function(require, exports, module) {
 		}
 
 		modTemplate[layoutIndex][modIndex] = obj.tmp;
+		console.log(modTemplate)
 	};
 
 	/**
@@ -686,11 +723,11 @@ function(require, exports, module) {
 		modHtml.attr('data-index', obj.modIndex);
 		
 		if(currentLayout.find('.'+setting.modWrapClassName).size() == 1 ){
-			currentOmodWrap.removeClass('vi-virtual-module').addClass('omod-preview').find('a[data-action="addMod"]').remove();
+			currentOmodWrap.find('a[data-action="addMod"]').remove();
 			currentOmodWrap.append(modHtml);
 			
 		}else{
-			currentOmodWrap.removeClass('vi-virtual-module').addClass('omod-preview').find('a[data-action="addMod"]').replaceWith(modHtml);
+			currentOmodWrap.find('a[data-action="addMod"]').replaceWith(modHtml);
 		}
 
 		_resetModWindowPostion();
